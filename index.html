@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crée ton site web avec l'IA — Session Live | Club Créateurs IA</title>
+<meta name="description" content="Session live payante : apprends à créer un site web professionnel avec l'IA, même depuis ton téléphone. Sans code, sans outil payant. 25 places limitées. Samedi 11 juillet 2026 sur Google Meet.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  :root{
+    --bg:#0A0A0F;
+    --bg-card:#12121A;
+    --bg-card-hover:#161620;
+    --violet:#8B00FF;
+    --violet-soft:rgba(139,0,255,0.14);
+    --violet-border:rgba(139,0,255,0.35);
+    --violet-glow:rgba(139,0,255,0.45);
+    --white:#FFFFFF;
+    --gray:#B4B4C0;
+    --gray-dim:#7A7A88;
+    --red:#FF3B5C;
+    --green:#22C55E;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--white);
+    font-family:'DM Sans', sans-serif;
+    overflow-x:hidden;
+    position:relative;
+  }
+  h1,h2,h3,.display{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:800;
+    letter-spacing:-0.01em;
+    line-height:1.05;
+  }
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+  .container{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  .section{
+    position:relative;
+    padding:100px 0;
+  }
+  @media(max-width:768px){
+    .section{padding:64px 0;}
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--violet-soft);
+    border:1px solid var(--violet-border);
+    color:#C79BFF;
+    font-size:13px;
+    font-weight:700;
+    padding:8px 18px;
+    border-radius:999px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+  }
+  .violet{color:var(--violet);}
+  .glow-bg{
+    position:absolute;
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle, var(--violet-glow) 0%, transparent 70%);
+    filter:blur(60px);
+    pointer-events:none;
+    z-index:0;
+    opacity:0.5;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    font-family:'DM Sans',sans-serif;
+    font-weight:700;
+    font-size:16px;
+    padding:16px 32px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    border:none;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--violet);
+    color:#fff;
+    box-shadow:0 8px 30px var(--violet-glow);
+  }
+  .btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 40px var(--violet-glow);
+  }
+  .btn-outline{
+    background:transparent;
+    color:var(--white);
+    border:1.5px solid rgba(255,255,255,0.25);
+  }
+  .btn-outline:hover{
+    border-color:var(--violet);
+    background:var(--violet-soft);
+    transform:translateY(-3px);
+  }
+  .btn-block{width:100%;}
+
+  /* HEADER */
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(10,10,15,0.75);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 24px;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:800;
+    font-size:20px;
+    letter-spacing:0.01em;
+  }
+  .logo-badge{
+    width:34px;height:34px;
+    background:var(--violet);
+    border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 16px var(--violet-glow);
+  }
+  .nav .btn{padding:11px 24px;font-size:14px;}
+
+  /* HERO */
+  .hero{
+    padding:80px 0 60px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .glow-bg{top:-200px;left:50%;transform:translateX(-50%);}
+  .hero-content{position:relative;z-index:1;max-width:820px;margin:0 auto;}
+  .hero h1{
+    font-size:clamp(34px,6.5vw,64px);
+    margin:26px 0 20px;
+  }
+  .hero p.sub{
+    color:var(--gray);
+    font-size:clamp(16px,2.2vw,19px);
+    max-width:620px;
+    margin:0 auto 34px;
+    line-height:1.6;
+  }
+  .rotating-word-mask{
+    display:inline-block;
+    overflow:hidden;
+    height:1.05em;
+    line-height:1.05;
+    vertical-align:top;
+  }
+  .rotating-word{
+    display:inline-block;
+    will-change:transform, opacity;
+  }
+  .hero-ctas{
+    display:flex;
+    gap:16px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-bottom:44px;
+  }
+  .meet-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:var(--gray);
+    font-size:14px;
+    margin-bottom:36px;
+  }
+  .meet-tag svg{color:var(--violet);}
+
+  .countdown{
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .countdown .unit{
+    background:var(--bg-card);
+    border:1px solid var(--violet-border);
+    border-radius:16px;
+    padding:16px 20px;
+    min-width:82px;
+    text-align:center;
+  }
+  .countdown .num{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:800;
+    font-size:32px;
+    color:var(--violet);
+    display:block;
+    font-variant-numeric:tabular-nums;
+  }
+  .countdown .label{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--gray-dim);
+  }
+
+  /* REVEAL */
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
+  /* SECTION HEAD */
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 56px;
+  }
+  .section-head h2{
+    font-size:clamp(28px,4.5vw,44px);
+    margin-top:16px;
+  }
+  .section-head p{
+    color:var(--gray);
+    margin-top:14px;
+    font-size:16px;
+    line-height:1.6;
+  }
+  .glitch{
+    position:relative;
+    display:inline-block;
+  }
+  .glitch::before,.glitch::after{
+    content:attr(data-text);
+    position:absolute;
+    top:0;left:0;
+    width:100%;
+    opacity:0.5;
+  }
+  .glitch::before{
+    color:#FF3B5C;
+    transform:translate(2px,0);
+    mix-blend-mode:screen;
+    animation:glitchTop 4s infinite ease-in-out;
+  }
+  .glitch::after{
+    color:#00E0FF;
+    transform:translate(-2px,0);
+    mix-blend-mode:screen;
+    animation:glitchBottom 4s infinite ease-in-out;
+  }
+  @keyframes glitchTop{
+    0%,88%,100%{transform:translate(2px,0);opacity:0.5;}
+    90%{transform:translate(-3px,1px);opacity:0.8;}
+    92%{transform:translate(3px,-1px);opacity:0.2;}
+  }
+  @keyframes glitchBottom{
+    0%,88%,100%{transform:translate(-2px,0);opacity:0.5;}
+    90%{transform:translate(3px,-1px);opacity:0.2;}
+    92%{transform:translate(-3px,1px);opacity:0.8;}
+  }
+
+  /* GRID CARDS */
+  .grid{
+    display:grid;
+    gap:20px;
+  }
+  .grid-4{grid-template-columns:repeat(4,1fr);}
+  .grid-3{grid-template-columns:repeat(3,1fr);}
+  .grid-2{grid-template-columns:repeat(2,1fr);}
+  @media(max-width:900px){
+    .grid-4{grid-template-columns:repeat(2,1fr);}
+    .grid-3{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(max-width:600px){
+    .grid-4,.grid-3,.grid-2{grid-template-columns:1fr;}
+  }
+
+  .card{
+    background:var(--bg-card);
+    border:1px solid rgba(139,0,255,0.18);
+    border-radius:20px;
+    padding:28px 24px;
+    transition:transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  }
+  .card:hover{
+    transform:translateY(-6px);
+    border-color:var(--violet-border);
+    background:var(--bg-card-hover);
+  }
+  .icon-box{
+    width:48px;height:48px;
+    border-radius:12px;
+    background:var(--violet-soft);
+    border:1px solid var(--violet-border);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:18px;
+    color:var(--violet);
+  }
+  .icon-box.red{
+    background:rgba(255,59,92,0.12);
+    border-color:rgba(255,59,92,0.35);
+    color:var(--red);
+  }
+  .card h3{
+    font-size:18px;
+    font-family:'DM Sans',sans-serif;
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .card p{
+    color:var(--gray);
+    font-size:14.5px;
+    line-height:1.6;
+  }
+
+  /* STATS */
+  .stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    text-align:center;
+  }
+  @media(max-width:768px){
+    .stats-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  .stat-num{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:800;
+    font-size:clamp(36px,6vw,54px);
+    color:var(--violet);
+  }
+  .stat-label{
+    color:var(--gray);
+    font-size:14px;
+    margin-top:6px;
+  }
+
+  /* TIMELINE (méthode) */
+  .timeline{
+    position:relative;
+    max-width:760px;
+    margin:0 auto;
+  }
+  .timeline-line{
+    position:absolute;
+    left:27px;
+    top:14px;
+    bottom:14px;
+    width:2px;
+    background:linear-gradient(to bottom, var(--violet), transparent);
+  }
+  @media(max-width:600px){.timeline-line{left:23px;}}
+  .timeline-step{
+    display:flex;
+    gap:24px;
+    margin-bottom:40px;
+    position:relative;
+  }
+  .timeline-step:last-child{margin-bottom:0;}
+  .timeline-dot{
+    width:56px;height:56px;
+    min-width:56px;
+    border-radius:50%;
+    background:var(--bg-card);
+    border:1.5px solid var(--violet-border);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--violet);
+    z-index:1;
+  }
+  @media(max-width:600px){.timeline-dot{width:48px;height:48px;min-width:48px;}}
+  .timeline-text h3{font-size:18px;margin-bottom:6px;font-family:'DM Sans',sans-serif;}
+  .timeline-text p{color:var(--gray);font-size:14.5px;line-height:1.6;}
+
+  /* BONUS */
+  .bonus-card{
+    background:var(--bg-card);
+    border:1px solid var(--violet-border);
+    border-radius:20px;
+    padding:32px;
+    display:flex;
+    gap:20px;
+    align-items:flex-start;
+  }
+  .bonus-badge{
+    display:inline-block;
+    background:var(--violet-soft);
+    color:#C79BFF;
+    font-size:11px;
+    font-weight:700;
+    padding:5px 12px;
+    border-radius:999px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    margin-top:10px;
+  }
+
+  /* PRICING */
+  .pricing-wrap{
+    max-width:520px;
+    margin:0 auto;
+    position:relative;
+  }
+  .pricing-card{
+    background:linear-gradient(180deg, var(--bg-card) 0%, #16101F 100%);
+    border:1.5px solid var(--violet-border);
+    border-radius:26px;
+    padding:44px 32px;
+    text-align:center;
+    box-shadow:0 30px 80px rgba(139,0,255,0.15);
+    position:relative;
+    overflow:hidden;
+  }
+  .offer-badge{
+    background:var(--red);
+    color:#fff;
+    font-size:12px;
+    font-weight:700;
+    padding:7px 16px;
+    border-radius:999px;
+    display:inline-block;
+    margin-bottom:22px;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+  }
+  .price-old{
+    color:var(--gray-dim);
+    text-decoration:line-through;
+    font-size:18px;
+  }
+  .price-new{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:800;
+    font-size:52px;
+    color:var(--white);
+    margin:6px 0 4px;
+  }
+  .price-new span{color:var(--violet);}
+  .price-eur{color:var(--gray);font-size:14px;margin-bottom:26px;}
+  .check-list{
+    text-align:left;
+    margin:26px 0 30px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .check-list li{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    color:var(--gray);
+    font-size:14.5px;
+  }
+  .check-list svg{color:var(--green);min-width:20px;margin-top:1px;}
+  .pay-methods{
+    margin-top:22px;
+    color:var(--gray-dim);
+    font-size:12.5px;
+  }
+  .pay-methods strong{color:var(--gray);display:block;margin-bottom:8px;font-size:13px;}
+  .pay-logos{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:8px;
+  }
+  .pay-logos span{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    padding:5px 12px;
+    border-radius:8px;
+    font-size:12px;
+    color:var(--gray);
+  }
+
+  /* STEPS INSCRIPTION */
+  .steps-list{
+    max-width:640px;
+    margin:0 auto;
+  }
+  .step-row{
+    display:flex;
+    gap:20px;
+    align-items:flex-start;
+    padding:20px 0;
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  .step-row:last-child{border-bottom:none;}
+  .step-num{
+    width:36px;height:36px;
+    min-width:36px;
+    border-radius:50%;
+    background:var(--violet);
+    color:#fff;
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:800;
+    display:flex;align-items:center;justify-content:center;
+    font-size:15px;
+  }
+  .step-row p{color:var(--gray);font-size:15px;padding-top:6px;line-height:1.5;}
+  .step-row strong{color:var(--white);}
+
+  /* FAQ */
+  .faq-item{
+    background:var(--bg-card);
+    border:1px solid rgba(139,0,255,0.15);
+    border-radius:16px;
+    margin-bottom:14px;
+    overflow:hidden;
+  }
+  .faq-question{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:20px 24px;
+    cursor:pointer;
+    font-weight:700;
+    font-size:15.5px;
+  }
+  .faq-question svg{
+    transition:transform 0.3s ease;
+    color:var(--violet);
+    min-width:20px;
+  }
+  .faq-item.open .faq-question svg{transform:rotate(45deg);}
+  .faq-answer{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.35s ease, padding 0.35s ease;
+    padding:0 24px;
+    color:var(--gray);
+    font-size:14.5px;
+    line-height:1.65;
+  }
+  .faq-item.open .faq-answer{
+    max-height:260px;
+    padding:0 24px 22px;
+  }
+
+  /* FOOTER */
+  footer{
+    padding:80px 0 40px;
+    text-align:center;
+    position:relative;
+  }
+  .footer-cta h2{font-size:clamp(28px,5vw,46px);margin-bottom:18px;}
+  .footer-bottom{
+    margin-top:60px;
+    padding-top:28px;
+    border-top:1px solid rgba(255,255,255,0.06);
+    color:var(--gray-dim);
+    font-size:13px;
+  }
+
+  /* WHATSAPP FLOAT */
+  .wa-float{
+    position:fixed;
+    bottom:24px;
+    right:24px;
+    width:58px;height:58px;
+    background:var(--violet);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 8px 24px var(--violet-glow);
+    z-index:200;
+    transition:transform 0.25s ease;
+    color:#fff;
+  }
+  .wa-float:hover{transform:scale(1.08);}
+
+  @media(max-width:768px){
+    .bonus-card{flex-direction:column;}
+    .grid-2{grid-template-columns:1fr;}
+  }
+
+  @media(prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+    .reveal{opacity:1;transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <nav class="nav">
+    <div class="logo">
+      <div class="logo-badge"><i data-lucide="sparkles" style="color:#fff;width:18px;height:18px;"></i></div>
+      CLUB CRÉATEURS IA
+    </div>
+    <a href="https://ddhycygt.mychariow.shop/livesession-siteweb/checkout" target="_blank" rel="noopener" class="btn btn-primary">S'inscrire</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="glow-bg"></div>
+  <div class="container hero-content">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+      <span class="eyebrow"><i data-lucide="radio" style="width:15px;height:15px;"></i> Session Live</span>
+      <span class="eyebrow"><i data-lucide="flame" style="width:15px;height:15px;"></i> Places limitées — 25 participants seulement</span>
+    </div>
+    <h1>Apprends à créer<br><span class="rotating-word-mask"><span class="violet rotating-word" id="rotating-word">un site web</span></span><br>avec l'IA même depuis ton téléphone.</h1>
+    <p class="sub">Une session live en direct, 100% pratique, pour créer ton site professionnel avec l'IA — sans compétences techniques, sans outil payant, même depuis ton smartphone.</p>
+    <div class="hero-ctas">
+      <a href="https://ddhycygt.mychariow.shop/livesession-siteweb/checkout" target="_blank" rel="noopener" class="btn btn-primary">S'inscrire</a>
+      <a href="#programme" class="btn btn-outline">Voir le programme <i data-lucide="arrow-down" style="width:16px;height:16px;"></i></a>
+    </div>
+    <div class="meet-tag"><i data-lucide="video" style="width:16px;height:16px;"></i> En ligne sur Google Meet</div>
+
+    <div class="countdown" id="countdown">
+      <div class="unit"><span class="num" id="cd-days">00</span><span class="label">Jours</span></div>
+      <div class="unit"><span class="num" id="cd-hours">00</span><span class="label">Heures</span></div>
+      <div class="unit"><span class="num" id="cd-mins">00</span><span class="label">Minutes</span></div>
+      <div class="unit"><span class="num" id="cd-secs">00</span><span class="label">Secondes</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMES -->
+<section class="section" id="probleme">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Le blocage</span>
+      <h2>Tu te reconnais ici ?</h2>
+      <p>Créer un site web te semble encore compliqué, cher ou réservé aux "techniques". Ça va changer.</p>
+    </div>
+    <div class="grid grid-4">
+      <div class="card reveal">
+        <div class="icon-box red"><i data-lucide="x-circle"></i></div>
+        <h3>Aucune compétence technique</h3>
+        <p>Tu ne sais ni coder ni utiliser des outils compliqués — et tu penses que c'est un prérequis.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon-box red"><i data-lucide="x-circle"></i></div>
+        <h3>Les développeurs coûtent cher</h3>
+        <p>Faire appel à une agence ou un développeur représente un budget que tu ne peux pas encore te permettre.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon-box red"><i data-lucide="x-circle"></i></div>
+        <h3>Les outils te perdent</h3>
+        <p>Entre les plateformes payantes et les tutoriels interminables, tu ne sais plus par où commencer.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon-box red"><i data-lucide="x-circle"></i></div>
+        <h3>La peur de se lancer</h3>
+        <p>Tu remets ton projet à plus tard, de peur de perdre du temps ou de l'argent sur un site raté.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CE QUE TU VAS APPRENDRE -->
+<section class="section" id="programme">
+  <div class="glow-bg" style="left:-200px;top:20%;"></div>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Le contenu</span>
+      <h2>Une session live <span class="violet">100% pratique</span></h2>
+      <p>Pas de théorie interminable : tu passes à l'action pendant la session, avec un accompagnement direct.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card reveal">
+        <div class="icon-box"><i data-lucide="brain-circuit"></i></div>
+        <h3>Prompt engineering avancé</h3>
+        <p>Apprends à formuler des prompts précis et puissants pour obtenir exactement le site que tu veux.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon-box"><i data-lucide="clipboard-list"></i></div>
+        <h3>Rédaction de cahier des charges</h3>
+        <p>Structure clairement ton projet avant de te lancer, pour guider l'IA efficacement.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon-box"><i data-lucide="wand-sparkles"></i></div>
+        <h3>Maîtrise de Claude et Lovable</h3>
+        <p>Prends en main ces outils gratuits pour concevoir ton site de A à Z, sans code.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon-box"><i data-lucide="globe"></i></div>
+        <h3>Déploiement avec nom de domaine temporaire</h3>
+        <p>Mets ton site en ligne et rends-le accessible avec un nom de domaine temporaire.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon-box"><i data-lucide="layout-template"></i></div>
+        <h3>Bonnes techniques de création</h3>
+        <p>Adopte les bonnes pratiques pour créer un site propre, cohérent et professionnel.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon-box"><i data-lucide="shield-alert"></i></div>
+        <h3>Erreurs à absolument éviter</h3>
+        <p>Identifie les pièges classiques pour ne pas perdre de temps ni abîmer ton projet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREUVE SOCIALE -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">La communauté</span>
+      <h2>Rejoins une communauté qui grandit chaque jour</h2>
+    </div>
+    <div class="stats-grid reveal">
+      <div><div class="stat-num counter" data-target="500" data-suffix="+">0</div><div class="stat-label">Membres actifs dans la communauté</div></div>
+      <div><div class="stat-num counter" data-target="25" data-suffix="">0</div><div class="stat-label">Places disponibles pour cette session</div></div>
+      <div><div class="stat-num counter" data-target="100" data-suffix="%">0</div><div class="stat-label">En ligne et accessible</div></div>
+      <div><div class="stat-num counter" data-target="0" data-suffix="">0</div><div class="stat-label">Outil payant nécessaire</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODE / DEROULE -->
+<section class="section">
+  <div class="glow-bg" style="right:-200px;top:10%;"></div>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Le déroulé</span>
+      <h2>Comment ça se passe ?</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-line"></div>
+      <div class="timeline-step reveal">
+        <div class="timeline-dot"><i data-lucide="mouse-pointer-click"></i></div>
+        <div class="timeline-text">
+          <h3>Tu t'inscris à la session</h3>
+          <p>Tu réserves ta place en quelques minutes, places limitées à 25 participants.</p>
+        </div>
+      </div>
+      <div class="timeline-step reveal">
+        <div class="timeline-dot"><i data-lucide="calendar-clock"></i></div>
+        <div class="timeline-text">
+          <h3>Tu rejoins la session live le 11 juillet</h3>
+          <p>Rendez-vous sur Google Meet, en direct, avec tout le groupe.</p>
+        </div>
+      </div>
+      <div class="timeline-step reveal">
+        <div class="timeline-dot"><i data-lucide="rocket"></i></div>
+        <div class="timeline-text">
+          <h3>Tu crées ton site en direct</h3>
+          <p>Avec un accompagnement personnalisé jusqu'à la mise en ligne de ton site.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BONUS -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">En bonus</span>
+      <h2>En t'inscrivant aujourd'hui, tu reçois aussi...</h2>
+    </div>
+    <div class="grid grid-2">
+      <div class="bonus-card reveal">
+        <div class="icon-box"><i data-lucide="life-buoy"></i></div>
+        <div>
+          <h3 style="font-family:'DM Sans',sans-serif;font-size:18px;margin-bottom:6px;">Accompagnement jusqu'à la mise en ligne</h3>
+          <p style="color:var(--gray);font-size:14.5px;line-height:1.6;">Un suivi personnalisé pour t'aider à publier ton site jusqu'au bout, pas seulement pendant la session.</p>
+          <span class="bonus-badge">Valeur : inestimable</span>
+        </div>
+      </div>
+      <div class="bonus-card reveal">
+        <div class="icon-box"><i data-lucide="users"></i></div>
+        <div>
+          <h3 style="font-family:'DM Sans',sans-serif;font-size:18px;margin-bottom:6px;">Accès à la communauté Club Créateurs IA</h3>
+          <p style="color:var(--gray);font-size:14.5px;line-height:1.6;">Rejoins 500+ créateurs et entrepreneurs francophones pour continuer à progresser après la session.</p>
+          <span class="bonus-badge">Valeur : inestimable</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="glow-bg" style="left:50%;transform:translateX(-50%);top:0;"></div>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Inscription</span>
+      <h2>Réserve ta place à la session live</h2>
+      <p>Session en direct le samedi 11 juillet 2026, 20h00 GMT sur Google Meet.</p>
+    </div>
+
+    <div class="countdown reveal" style="margin-bottom:44px;">
+      <div class="unit"><span class="num" id="cd-days2">00</span><span class="label">Jours</span></div>
+      <div class="unit"><span class="num" id="cd-hours2">00</span><span class="label">Heures</span></div>
+      <div class="unit"><span class="num" id="cd-mins2">00</span><span class="label">Minutes</span></div>
+      <div class="unit"><span class="num" id="cd-secs2">00</span><span class="label">Secondes</span></div>
+    </div>
+
+    <div class="pricing-wrap reveal">
+      <div class="pricing-card">
+        <span class="offer-badge">Offre spéciale — Places limitées</span>
+        <div class="price-old"><span class="counter" data-target="5000" data-suffix="">0</span> FCFA</div>
+        <div class="price-new"><span class="counter" data-target="2500" data-suffix="">0</span> FCFA</div>
+        <div class="price-eur">≈ 3,80 €</div>
+
+        <ul class="check-list">
+          <li><i data-lucide="check-circle"></i> Session 100% en direct sur Google Meet</li>
+          <li><i data-lucide="check-circle"></i> Créer ton site même depuis ton téléphone</li>
+          <li><i data-lucide="check-circle"></i> Aucun outil payant nécessaire</li>
+          <li><i data-lucide="check-circle"></i> Accompagnement personnalisé inclus</li>
+          <li><i data-lucide="check-circle"></i> Places limitées à 25 participants</li>
+        </ul>
+
+        <a href="https://ddhycygt.mychariow.shop/livesession-siteweb/checkout" target="_blank" rel="noopener" class="btn btn-primary btn-block">S'inscrire — 2 500 FCFA</a>
+
+        <div class="pay-methods">
+          <strong>Paiement sécurisé via</strong>
+          <div class="pay-logos">
+            <span>Orange Money</span>
+            <span>MTN MoMo</span>
+            <span>Wave</span>
+            <span>Moov Money</span>
+            <span>Airtel Money</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMENT S'INSCRIRE -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Simple et rapide</span>
+      <h2>Comment s'inscrire en moins de 2 minutes</h2>
+    </div>
+    <div class="steps-list">
+      <div class="step-row reveal">
+        <div class="step-num">1</div>
+        <p><strong>Clique sur « S'inscrire »</strong> sur cette page.</p>
+      </div>
+      <div class="step-row reveal">
+        <div class="step-num">2</div>
+        <p><strong>Choisis ton moyen de paiement</strong> : Orange Money, MTN, Wave, Moov, etc.</p>
+      </div>
+      <div class="step-row reveal">
+        <div class="step-num">3</div>
+        <p><strong>Effectue le paiement</strong> de 2 500 FCFA.</p>
+      </div>
+      <div class="step-row reveal">
+        <div class="step-num">4</div>
+        <p><strong>Reçois la confirmation</strong> de ton inscription.</p>
+      </div>
+      <div class="step-row reveal">
+        <div class="step-num">5</div>
+        <p><strong>Reçois ton lien Google Meet</strong> automatiquement par email/SMS avant la session.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container" style="max-width:760px;">
+    <div class="section-head reveal">
+      <span class="eyebrow">Questions</span>
+      <h2 class="glitch" data-text="Questions fréquentes">Questions fréquentes</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-question">Ai-je besoin de compétences techniques ou en design ? <i data-lucide="plus"></i></div>
+        <div class="faq-answer">Non, aucune. La session est conçue pour les débutants complets : tu es guidé étape par étape du début à la fin.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-question">Puis-je vraiment créer un site depuis mon téléphone ? <i data-lucide="plus"></i></div>
+        <div class="faq-answer">Oui. Toute la méthode enseignée pendant la session fonctionne aussi bien sur smartphone que sur ordinateur.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-question">Quels outils vais-je utiliser pendant la session ? <i data-lucide="plus"></i></div>
+        <div class="faq-answer">Uniquement des outils gratuits basés sur l'intelligence artificielle. Aucun achat de logiciel n'est nécessaire.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-question">Quand vais-je recevoir le lien Google Meet ? <i data-lucide="plus"></i></div>
+        <div class="faq-answer">Le lien te sera envoyé automatiquement par email ou SMS avant le début de la session, une fois ton paiement confirmé.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-question">Est-ce que les 25 places sont vraiment limitées ? <i data-lucide="plus"></i></div>
+        <div class="faq-answer">Oui. La session est volontairement limitée à 25 participants pour garantir un accompagnement personnalisé de qualité.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-question">Comment vous contacter en cas de problème ? <i data-lucide="plus"></i></div>
+        <div class="faq-answer">Tu peux nous écrire directement sur WhatsApp via le bouton flottant en bas de la page, notre équipe te répond rapidement.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER / CTA FINAL -->
+<footer>
+  <div class="glow-bg" style="left:50%;transform:translateX(-50%);bottom:0;"></div>
+  <div class="container">
+    <div class="footer-cta reveal">
+      <span class="eyebrow">Dernier appel</span>
+      <h2 style="margin-top:16px;">Ne rate pas cette session</h2>
+      <p style="color:var(--gray);max-width:480px;margin:14px auto 30px;">25 places seulement, samedi 11 juillet 2026 à 20h00 GMT sur Google Meet.</p>
+      <a href="https://ddhycygt.mychariow.shop/livesession-siteweb/checkout" target="_blank" rel="noopener" class="btn btn-primary">S'inscrire — 2 500 FCFA</a>
+
+      <div class="countdown" style="margin-top:40px;">
+        <div class="unit"><span class="num" id="cd-days3">00</span><span class="label">Jours</span></div>
+        <div class="unit"><span class="num" id="cd-hours3">00</span><span class="label">Heures</span></div>
+        <div class="unit"><span class="num" id="cd-mins3">00</span><span class="label">Minutes</span></div>
+        <div class="unit"><span class="num" id="cd-secs3">00</span><span class="label">Secondes</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © ARKCOM / Club Créateurs IA, 2026. Tous droits réservés.
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/22941822325" class="wa-float" target="_blank" rel="noopener" aria-label="Contacter sur WhatsApp">
+  <i data-lucide="message-circle" style="width:26px;height:26px;"></i>
+</a>
+
+<script>
+  lucide.createIcons();
+
+  // MOT ROTATIF DANS LE TITRE HERO — animation douce "coming from down"
+  const rotatingWords = ['un site web', 'un portfolio', 'une landing page'];
+  const rotatingEl = document.getElementById('rotating-word');
+  let rotatingIndex = 0;
+  const EASE = 'cubic-bezier(0.45, 0, 0.2, 1)';
+  if(rotatingEl){
+    function rotateWord(){
+      // Étape 1 : le mot actuel glisse doucement vers le haut en s'effaçant
+      rotatingEl.style.transition = `opacity 0.5s ${EASE}, transform 0.5s ${EASE}`;
+      rotatingEl.style.opacity = '0';
+      rotatingEl.style.transform = 'translateY(-100%)';
+
+      setTimeout(()=>{
+        // Étape 2 : on change le texte et on le repositionne sous la ligne, sans transition
+        rotatingIndex = (rotatingIndex + 1) % rotatingWords.length;
+        rotatingEl.textContent = rotatingWords[rotatingIndex];
+        rotatingEl.style.transition = 'none';
+        rotatingEl.style.transform = 'translateY(100%)';
+        rotatingEl.style.opacity = '0';
+
+        // Forcer le recalcul du style pour que la transition suivante s'applique bien
+        void rotatingEl.offsetWidth;
+
+        // Étape 3 : le nouveau mot remonte doucement en fondu depuis le bas
+        rotatingEl.style.transition = `opacity 0.55s ${EASE}, transform 0.55s ${EASE}`;
+        rotatingEl.style.transform = 'translateY(0)';
+        rotatingEl.style.opacity = '1';
+      }, 500);
+    }
+    setInterval(rotateWord, 2800);
+  }
+
+  // COUNTDOWN
+  const targetDate = new Date("2026-07-11T20:00:00Z").getTime();
+  function pad(n){ return n.toString().padStart(2,'0'); }
+  function updateCountdown(){
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+    let d=0,h=0,m=0,s=0;
+    if(diff > 0){
+      d = Math.floor(diff / (1000*60*60*24));
+      h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+      m = Math.floor((diff % (1000*60*60)) / (1000*60));
+      s = Math.floor((diff % (1000*60)) / 1000);
+    }
+    const vals = {days:d, hours:h, mins:m, secs:s};
+    ['','2','3'].forEach(suffix=>{
+      const dEl = document.getElementById('cd-days'+suffix);
+      const hEl = document.getElementById('cd-hours'+suffix);
+      const mEl = document.getElementById('cd-mins'+suffix);
+      const sEl = document.getElementById('cd-secs'+suffix);
+      if(dEl) dEl.textContent = pad(vals.days);
+      if(hEl) hEl.textContent = pad(vals.hours);
+      if(mEl) mEl.textContent = pad(vals.mins);
+      if(sEl) sEl.textContent = pad(vals.secs);
+    });
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // SCROLL REVEAL (avec décalage progressif pour un effet en cascade)
+  const revealEls = document.querySelectorAll('.reveal');
+  revealEls.forEach(el=>{
+    const siblings = Array.from(el.parentElement.children).filter(c=>c.classList.contains('reveal'));
+    const idx = siblings.indexOf(el);
+    el.style.transitionDelay = Math.min(idx*90, 360) + 'ms';
+  });
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // COMPTEURS ANIMÉS (numbers counting up when they enter the viewport)
+  function formatNumber(n){
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  }
+  function animateCounter(el){
+    const target = parseInt(el.dataset.target, 10) || 0;
+    const suffix = el.dataset.suffix || '';
+    const duration = 1400;
+    let startTime = null;
+    function step(timestamp){
+      if(!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(eased * target);
+      el.textContent = formatNumber(current) + suffix;
+      if(progress < 1){
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = formatNumber(target) + suffix;
+      }
+    }
+    requestAnimationFrame(step);
+  }
+  const counterEls = document.querySelectorAll('.counter');
+  const counterObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  counterEls.forEach(el => counterObserver.observe(el));
+
+  // FAQ ACCORDION
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    item.querySelector('.faq-question').addEventListener('click', ()=>{
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+      if(!isOpen){ item.classList.add('open'); }
+    });
+  });
+</script>
+
+</body>
+</html>
