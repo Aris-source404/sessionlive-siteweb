@@ -119,6 +119,62 @@
   }
   .btn-block{width:100%;}
 
+  /* SOCIAL PROOF POPUP */
+  #proof-popup{
+    position:fixed;
+    left:20px;
+    top:90px;
+    max-width:340px;
+    background:var(--bg-card);
+    border:1px solid var(--violet-border);
+    border-radius:16px;
+    padding:16px 18px;
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    box-shadow:0 12px 30px rgba(0,0,0,0.5);
+    transform:translateY(-140%);
+    opacity:0;
+    transition:transform .5s cubic-bezier(.22,1,.36,1), opacity .5s ease;
+    z-index:998;
+  }
+  #proof-popup.show{
+    transform:translateY(0);
+    opacity:1;
+  }
+  .pp-avatar{
+    width:46px;height:46px;border-radius:50%;
+    background:var(--violet);
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-weight:800;font-size:19px;
+    font-family:'Barlow Condensed',sans-serif;
+    flex-shrink:0;position:relative;
+    box-shadow:0 4px 16px var(--violet-glow);
+  }
+  .pp-check{
+    position:absolute;bottom:-2px;right:-2px;
+    background:var(--green);
+    width:17px;height:17px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    border:2px solid var(--bg-card);
+    font-size:10px;color:#fff;
+  }
+  .pp-name{font-weight:700;color:var(--white);font-size:14.5px;}
+  .pp-country{color:var(--gray-dim);font-weight:500;font-size:12.5px;margin-left:5px;}
+  .pp-action{color:var(--gray);font-size:13.5px;margin-top:3px;line-height:1.45;}
+  .pp-action b{color:var(--white);}
+  .pp-meta{margin-top:6px;display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--gray-dim);}
+  .pp-verified{color:var(--green);font-weight:700;display:flex;align-items:center;gap:4px;}
+  .pp-close{
+    position:absolute;top:8px;right:10px;
+    background:none;border:none;color:var(--gray-dim);
+    cursor:pointer;font-size:15px;line-height:1;
+    padding:2px;
+  }
+  @media(max-width:480px){
+    #proof-popup{left:12px;right:12px;top:70px;max-width:none;}
+  }
+
   /* HEADER */
   header{
     position:sticky;
@@ -966,6 +1022,25 @@
   </div>
 </footer>
 
+<!-- SOCIAL PROOF POPUP -->
+<div id="proof-popup">
+  <button class="pp-close" onclick="hideProofPopup()" aria-label="Fermer">✕</button>
+  <div class="pp-avatar">
+    <span id="pp-initial">A</span>
+    <div class="pp-check">✓</div>
+  </div>
+  <div>
+    <span class="pp-name" id="pp-name">Alexander D.</span>
+    <span class="pp-country" id="pp-country">BJ (Bénin) 🇧🇯</span>
+    <div class="pp-action">a rejoint <b id="pp-offer">Crée ton site web avec l'IA</b></div>
+    <div class="pp-meta">
+      <span id="pp-time">il y a 14 s</span>
+      <span>•</span>
+      <span class="pp-verified">✓ ACHAT VÉRIFIÉ</span>
+    </div>
+  </div>
+</div>
+
 <!-- WHATSAPP FLOAT -->
 <a href="https://wa.me/22941822325" class="wa-float" target="_blank" rel="noopener" aria-label="Contacter sur WhatsApp">
   <i data-lucide="message-circle" style="width:26px;height:26px;"></i>
@@ -1093,6 +1168,59 @@
       if(!isOpen){ item.classList.add('open'); }
     });
   });
+  // SOCIAL PROOF POPUP
+  const proofs = [
+    { name: "Alexander D.", country: "BJ (Bénin)", flag: "🇧🇯" },
+    { name: "Fabrice K.",   country: "CI (Côte d'Ivoire)", flag: "🇨🇮" },
+    { name: "Nadège S.",    country: "SN (Sénégal)", flag: "🇸🇳" },
+    { name: "Josué M.",     country: "BJ (Bénin)", flag: "🇧🇯" },
+    { name: "Aïcha T.",     country: "TG (Togo)", flag: "🇹🇬" },
+    { name: "Kevin A.",     country: "CI (Côte d'Ivoire)", flag: "🇨🇮" },
+    { name: "Rachelle O.",  country: "BJ (Bénin)", flag: "🇧🇯" },
+    { name: "Moussa D.",    country: "ML (Mali)", flag: "🇲🇱" },
+    { name: "Prisca H.",    country: "BJ (Bénin)", flag: "🇧🇯" },
+    { name: "Ibrahim S.",   country: "NE (Niger)", flag: "🇳🇪" },
+    { name: "Grace L.",     country: "CM (Cameroun)", flag: "🇨🇲" },
+    { name: "Yannick B.",   country: "BJ (Bénin)", flag: "🇧🇯" },
+    { name: "Fatima Z.",    country: "SN (Sénégal)", flag: "🇸🇳" },
+    { name: "Ornella T.",   country: "CI (Côte d'Ivoire)", flag: "🇨🇮" },
+    { name: "Steeve K.",    country: "BJ (Bénin)", flag: "🇧🇯" },
+    { name: "Chantal M.",   country: "CG (Congo)", flag: "🇨🇬" },
+    { name: "Bertrand A.",  country: "BJ (Bénin)", flag: "🇧🇯" },
+    { name: "Aminata C.",   country: "SN (Sénégal)", flag: "🇸🇳" },
+    { name: "Enoch V.",     country: "TG (Togo)", flag: "🇹🇬" },
+    { name: "Mireille N.",  country: "GA (Gabon)", flag: "🇬🇦" },
+  ];
+  const offerName = "Crée ton site web avec l'IA";
+  const proofPopup = document.getElementById('proof-popup');
+  let proofIndex = -1;
+  function pickNextProof(){
+    let i;
+    do { i = Math.floor(Math.random() * proofs.length); } while (i === proofIndex && proofs.length > 1);
+    proofIndex = i;
+    return proofs[i];
+  }
+  function renderProof(p){
+    document.getElementById('pp-initial').textContent = p.name.charAt(0);
+    document.getElementById('pp-name').textContent = p.name;
+    document.getElementById('pp-country').textContent = `${p.country} ${p.flag}`;
+    document.getElementById('pp-offer').textContent = offerName;
+    const secondsAgo = Math.floor(Math.random() * 40) + 5;
+    document.getElementById('pp-time').textContent = `il y a ${secondsAgo} s`;
+  }
+  function showProofPopup(){
+    if(!proofPopup) return;
+    renderProof(pickNextProof());
+    proofPopup.classList.add('show');
+    setTimeout(()=> proofPopup.classList.remove('show'), 5000);
+  }
+  function hideProofPopup(){
+    if(proofPopup) proofPopup.classList.remove('show');
+  }
+  if(proofPopup){
+    setTimeout(showProofPopup, 3000);
+    setInterval(showProofPopup, 15000);
+  }
 </script>
 
 </body>
